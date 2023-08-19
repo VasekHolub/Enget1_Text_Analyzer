@@ -7,18 +7,18 @@ discord: .avalok
 import task_template as texts
 
 #Variables
-registered_users = {'bob': '123',
-                    'ann': 'pass123',
-                    'mike': 'password123',
-                    'liz': 'pass123'}
-sep = '-'*40
-words = ''
-upper_case = []
+users = {'bob': '123',
+          'ann': 'pass123',
+          'mike': 'password123',
+          'liz': 'pass123'}
+sep = '-' * 40
+upper_case_letter = []
+upper_case_word = []
 
 #Login
 user_name = input('Enter username: ')
 user_password = input('Enter password: ')
-if registered_users.get(user_name) == user_password:
+if users.get(user_name) == user_password:
   print(f'{sep}\nWelcome to the app {user_name}\nWe have 3 texts to be analyzed.\n{sep}')
 else:
   print('unregistered user, terminating the program...')
@@ -34,7 +34,13 @@ text_list = texts.TEXTS[int(text_choice) - 1].split()
 words = len(text_list)
 for i in text_list:
   if i[0].isupper():
-    upper_case.append(i)
+    upper_case_letter.append(i)
   else:
     continue
-print(upper_case)
+for i in text_list:
+  if i.isupper():
+    upper_case_word.append(i)
+  else:
+    continue
+uppper_case_letter_count = len(upper_case_letter)
+upper_case_word_count = len(upper_case_word)
