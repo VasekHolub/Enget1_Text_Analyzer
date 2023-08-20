@@ -41,23 +41,15 @@ words = len(text_list)
 for i in text_list:
   if i.istitle():
     title_words.append(i)
-  else:
-    continue
-for i in text_list:
-  if i.isupper():
+  elif i.isupper():
     upper_case_word.append(i)
-  else:
-    continue
-for i in text_list:
-  if not i.istitle() and not i.isnumeric() and not i.isupper():
+  elif not i.istitle() and not i.isnumeric() and not i.isupper():
     lower_case_word.append(i)
-  else:
-    continue
-for i in text_list:
-  if i.isnumeric():
+  elif i.isnumeric():
     numerics.append(i)
   else:
     continue
+
 for i in numerics:
   int_numerics.append(int(i))
 
@@ -68,3 +60,9 @@ lower_case_word_count = len(lower_case_word)
 numerics_count = len(numerics)
 numerics_sum = sum((int_numerics))
 
+
+print(title_words_count)
+print(upper_case_word_count)
+print(lower_case_word_count)
+print(numerics_count)
+print(numerics_sum)
