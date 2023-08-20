@@ -37,7 +37,6 @@ if not text_choice.isnumeric() or int(text_choice) - 1 not in range(0,3):
 
 #Text analysis
 text_list = texts.TEXTS[int(text_choice) - 1].split()
-words = len(text_list)
 for i in text_list:
   if i.istitle():
     title_words.append(i)
@@ -54,15 +53,17 @@ for i in numerics:
   int_numerics.append(int(i))
 
 #Counts of occurrences
+words = len(text_list)
 title_words_count = len(title_words)
 upper_case_word_count = len(upper_case_word)
 lower_case_word_count = len(lower_case_word)
 numerics_count = len(numerics)
 numerics_sum = sum((int_numerics))
 
-
-print(title_words_count)
-print(upper_case_word_count)
-print(lower_case_word_count)
-print(numerics_count)
-print(numerics_sum)
+print(f'''There are {words} words in the selected text.
+There are {title_words_count} titlecase words.
+There are {upper_case_word_count} uppercase words.
+There are {lower_case_word_count} lowercase words.
+There are {numerics_count} numeric strings.
+The sum of all the numbers {numerics_sum}
+{sep}''')
