@@ -113,17 +113,18 @@ There are {title_words_count} titlecase words.
 There are {upper_case_word_count} uppercase words.
 There are {lower_case_word_count} lowercase words.
 There are {numerics_count} numeric strings.
-The sum of all the numbers {numerics_sum}
-{sep}
-LEN|  OCCURENCES  |NR.
-{sep}''')
+The sum of all the numbers {numerics_sum}''')
 
 #Graph
 max_symbols = 0
 for i in (sorted_word_length):
- occ_symbols = sorted_word_length.count(i) * "*"
- if len(occ_symbols) > max_symbols:
-    max_symbols = len(occ_symbols)
+ occ_symbols = sorted_word_length.count(i)
+ if occ_symbols > max_symbols:
+    max_symbols = occ_symbols
+
+print(f'''{sep}
+LEN|  OCCURENCES{(max_symbols - 10) * " "}|NR.
+{sep}''')
 
 for i in set(sorted_word_length):
  occ_symbols = sorted_word_length.count(i) * "*"
