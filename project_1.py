@@ -18,6 +18,7 @@ upper_case_word = []
 lower_case_word = []
 numerics = []
 int_numerics = []
+text_list_alphanum = []
 
 #Login
 user_name = input('Enter username: ')
@@ -37,6 +38,7 @@ if not text_choice.isnumeric() or int(text_choice) - 1 not in range(0,3):
 
 #Text analysis
 text_list = texts.TEXTS[int(text_choice) - 1].split()
+
 for i in text_list:
   if i.istitle():
     title_words.append(i)
@@ -60,10 +62,34 @@ lower_case_word_count = len(lower_case_word)
 numerics_count = len(numerics)
 numerics_sum = sum((int_numerics))
 
+# Determining word length
+  # Striping non alnum characters from the word list
+for i in text_list:
+  if not i.isalnum():
+    for x in i:
+      if not x.isalnum():
+        text_list_alphanum.append(i.replace(x,'')) 
+        continue
+  else:
+    text_list_alphanum.append(i)
+
+  #Sorting word length
+word_lengt = []
+for i in text_list_alphanum:
+  word_lengt.append(len(i))
+sorted_word_length = sorted(word_lengt)
+
+#User output
 print(f'''There are {words} words in the selected text.
 There are {title_words_count} titlecase words.
 There are {upper_case_word_count} uppercase words.
 There are {lower_case_word_count} lowercase words.
 There are {numerics_count} numeric strings.
 The sum of all the numbers {numerics_sum}
+{sep}
+LEN|  OCCURENCES  |NR.
 {sep}''')
+
+#Graph construction
+for i in sorted_word_length:
+ print(f'{i}|{sorted_word_length.count(i) * "*"} {sorted_word_length.count(i)}')
