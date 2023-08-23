@@ -36,10 +36,12 @@ garpike and stingray are also present.'''
 ]
 
 #Variables
-users = {'bob': '123',
-          'ann': 'pass123',
-          'mike': 'password123',
-          'liz': 'pass123'}
+users = {
+  'bob': '123',
+  'ann': 'pass123',
+  'mike': 'password123',
+  'liz': 'pass123'}
+
 sep = '-' * 40
 title_words = []
 upper_case_word = []
@@ -47,12 +49,13 @@ lower_case_word = []
 numerics = []
 int_numerics = []
 text_list_alphanum = []
+word_length = []
 
 #Login
 user_name = input('Enter username: ')
 user_password = input('Enter password: ')
 if users.get(user_name) == user_password:
-  print(f'{sep}\nWelcome to the app {user_name}\nWe have 3 texts to be analyzed.\n{sep}')
+  print(f'''{sep}\nWelcome to the app {user_name}\nWe have 3 texts to be analyzed.\n{sep}''')
 else:
   print('unregistered user, terminating the program...')
   sys.exit()
@@ -76,8 +79,6 @@ for i in text_list:
     lower_case_word.append(i)
   elif i.isnumeric():
     numerics.append(i)
-  else:
-    continue
 
 for i in numerics:
   int_numerics.append(int(i))
@@ -97,12 +98,10 @@ for i in text_list:
     for x in i:
       if not x.isalnum():
         text_list_alphanum.append(i.replace(x,'')) 
-        continue
   else:
     text_list_alphanum.append(i)
 
 #Sorting word length
-word_length = []
 for i in text_list_alphanum:
   word_length.append(len(i))
 sorted_word_length = sorted(word_length)
