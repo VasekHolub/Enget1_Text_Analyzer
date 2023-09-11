@@ -40,13 +40,15 @@ garpike and stingray are also present.""",
 users = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass123"}
 
 sep = "-" * 40
-title_words = []
-upper_case_word = []
-lower_case_word = []
 numerics = []
 int_numerics = []
 text_list_alphanum = []
 word_length = []
+
+title_words_count = 0
+upper_case_word_count = 0
+lower_case_word_count = 0
+numerics_count = 0
 
 # Login
 user_name = input("Enter username: ")
@@ -68,6 +70,7 @@ if not text_choice.isnumeric() or int(text_choice) not in range(1, 4):
 
 # Text analysis
 text_list = TEXTS[int(text_choice) - 1].split()
+words = len(text_list)
 
 # Striping non alnum characters from the word list
 for i in text_list:
@@ -80,24 +83,20 @@ for i in text_list:
 
 for i in text_list_alphanum:
     if i.istitle() and i[0].isalpha():
-        title_words.append(i)
+        title_words_count += 1
     elif i.isupper() and i[0].isalpha():
-        upper_case_word.append(i)
+        upper_case_word_count += 1
     elif not i.istitle() and not i.isnumeric() and not i.isupper():
-        lower_case_word.append(i)
+        lower_case_word_count += 1
     elif i.isnumeric():
         numerics.append(i)
+        numerics_count += 1
 
 for i in numerics:
     int_numerics.append(int(i))
 
 
 # Counts of occurrences
-words = len(text_list)
-title_words_count = len(title_words)
-upper_case_word_count = len(upper_case_word)
-lower_case_word_count = len(lower_case_word)
-numerics_count = len(numerics)
 numerics_sum = sum((int_numerics))
 
 # Determining word length
@@ -106,8 +105,7 @@ for i in text_list_alphanum:
 sorted_word_length = sorted(word_length)
 
 # User output
-print(title_words)
-print(upper_case_word)
+
 print(
     f"""There are {words} words in the selected text.
 There are {title_words_count} titlecase words.
