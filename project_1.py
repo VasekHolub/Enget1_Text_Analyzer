@@ -49,6 +49,8 @@ title_words_count = 0
 upper_case_word_count = 0
 lower_case_word_count = 0
 numerics_count = 0
+upper_case = []
+title_case = []
 
 # Login
 user_name = input("Enter username: ")
@@ -82,9 +84,11 @@ for i in text_list:
         text_list_alphanum.append(i)
 
 for i in text_list_alphanum:
-    if i.istitle() and i[0].isalpha():
+    if i.istitle() and i.isalpha():
+        title_case.append(i)
         title_words_count += 1
-    elif i.isupper() and i[0].isalpha():
+    elif i.isupper() and i.isalpha():
+        upper_case.append(i)
         upper_case_word_count += 1
     elif not i.istitle() and not i.isnumeric() and not i.isupper():
         lower_case_word_count += 1
@@ -114,7 +118,8 @@ There are {lower_case_word_count} lowercase words.
 There are {numerics_count} numeric strings.
 The sum of all the numbers {numerics_sum}"""
 )
-
+print(upper_case)
+print(title_case)
 # Graph
 max_symbols = 0
 for i in sorted_word_length:
