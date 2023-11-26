@@ -138,7 +138,6 @@ def graph_printer(sorted_word_length: list) -> None:
 def main():
     user_login()
     striped_text = text_nonalnum_char_strip(texts[text_selection(texts) - 1])
-    print(striped_text)
     text_to_analyse = striped_text.split()
     analysed_text = text_analysis(text_to_analyse)
     sorted_word_length = sort_word_length(text_to_analyse)
